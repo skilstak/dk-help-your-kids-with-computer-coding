@@ -144,16 +144,3 @@ while time.time() < end:
     show_time(int(end - time.time()))
     window.update()
     time.sleep(0.01)
-
-# use of \ for line continuations is officially discouraged
-# and unnecessary
-
-c.create_text(MID_X, MID_Y, text='GAME OVER', fill='white',
-        font=('Helvetica', 30))
-c.create_text(MID_X, MID_Y + 30, text='Score: ' + str(score),
-        fill='white')
-c.create_text(MID_X, MID_Y + 45, text='Bonus Time: ' +
-        str(bonus*TIME_LIMIT), fill='white')
-
-# added to keep the final screen up (when not using IDLE)
-input()

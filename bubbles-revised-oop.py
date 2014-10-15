@@ -143,9 +143,9 @@ class Game():
             self.window.update()
             time.sleep(0.01)
         Text(self.canvas,self.mid_x, self.mid_y,'GAME OVER')
-        Text(self.canvas,self.mid_x, self.mid_y + 30,\
+        Text(self.canvas,self.mid_x, self.mid_y + 30,
                 'Score ' + str(self.score))
-        Text(self.canvas,self.mid_x, self.mid_y + 45,'Bonus Time ' + \
+        Text(self.canvas,self.mid_x, self.mid_y + 45,'Bonus Time ' + 
                 str(self.bonus * self.time_limit))
         input()
 
