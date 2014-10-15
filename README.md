@@ -1,5 +1,5 @@
-Help Your Kids with Computer Coding (DK)
-========================================
+Help Your Kids with Computer Coding
+===================================
 
 Examples, revisions, and extensions to the DK book 'Help Your Kids with
 Computer Coding'.
