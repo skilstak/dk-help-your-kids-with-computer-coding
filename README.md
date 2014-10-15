@@ -1,8 +1,10 @@
 Help Your Kids with Computer Coding
 ===================================
 
-Examples, revisions, and extensions to the DK book
-'Help Your Kids with Computer Coding' related to the Python
+Examples, revisions, and extensions
+to the DK book [Help Your Kids with Computer
+Coding](http://www.amazon.com/Help-Your-Kids-Computer-Coding/dp/146541956X)
+related to the Python
 [`turtle`](https://docs.python.org/3.4/library/turtle.html#module-turtle)
 and [`tkinter`](https://docs.python.org/3.4/library/tkinter.html) modules.
 
