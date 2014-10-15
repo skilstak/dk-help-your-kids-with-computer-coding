@@ -1,3 +1,10 @@
+'''
+This object-oriented revision of the Bubble Blaster program tries to keep
+the general feel of the one in the book that uses global variables and
+such. For a version that takes a more direct tk approach see
+bubbles-revised-oop-tk.py
+'''
+
 import tkinter
 import math
 import time

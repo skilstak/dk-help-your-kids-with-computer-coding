@@ -1,11 +1,13 @@
 Help Your Kids with Computer Coding
 ===================================
 
-Examples, revisions, and extensions to the DK book 'Help Your Kids with
-Computer Coding'.
+Examples, revisions, and extensions to the DK book
+'Help Your Kids with Computer Coding' related to the Python
+[`turtle`](https://docs.python.org/3.4/library/turtle.html#module-turtle)
+and [`tkinter`](https://docs.python.org/3.4/library/tkinter.html) modules.
 
 DK's book is one of the better ones but the Python examples use some bad
-practices and can be confusing to follow:
+practices and can be confusing to follow: 
 
 * Unnecessary use of `from tkinter import *` (or any `*` at all)
 * Unnecessary use of `from turtle import *`
