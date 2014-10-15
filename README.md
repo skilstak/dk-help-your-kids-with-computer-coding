@@ -35,5 +35,6 @@ LICENSE
 
 While these examples fall under copyright with the book, fair use
 allows us to expand and comment on them here. We assume you have already
-purchased a copy of the book and are seeking clarification or what it
-contains or want to expand on what you have learned in it.
+purchased a copy of the book and are seeking clarification and what it
+contains or want to expand on what you have learned in it. Any additional
+contributions (not in the book) are public domain.
