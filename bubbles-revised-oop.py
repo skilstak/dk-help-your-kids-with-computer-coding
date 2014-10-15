@@ -66,13 +66,13 @@ class Ship(CanvasObject):
 class Text(CanvasObject):
     def_color = 'white'
     def_text = ''
-    def __init__(self,canvas,x=0,y=0,text=None,fill=None):
+    def __init__(self,canvas,x=0,y=0,text=None,fill=None,font=None):
         if not fill: fill = self.def_color
         if not text: text = self.def_text
         self.canvas = canvas
         self.text = text
         self.fill = fill
-        self.cid = canvas.create_text(x,y,text=text,fill=fill)
+        self.cid = canvas.create_text(x,y,text=text,fill=fill,font=font)
 
     def update(self,text):
         self.text = text
@@ -142,7 +142,8 @@ class Game():
             self.update_gui()
             self.window.update()
             time.sleep(0.01)
-        Text(self.canvas,self.mid_x, self.mid_y,'GAME OVER')
+        Text(self.canvas,self.mid_x, self.mid_y,'GAME OVER',
+                font=('Helvetica',30))
         Text(self.canvas,self.mid_x, self.mid_y + 30,
                 'Score ' + str(self.score))
         Text(self.canvas,self.mid_x, self.mid_y + 45,'Bonus Time ' + 
