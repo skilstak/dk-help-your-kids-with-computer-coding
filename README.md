@@ -5,8 +5,7 @@ Examples, revisions, and extensions to the DK book 'Help Your Kids with
 Computer Coding'.
 
 DK's book is one of the better ones but the Python examples use some bad
-practices and can be confusing to follow &mdash; especially the `tkinter`
-Bubble Blaster project:
+practices and can be confusing to follow:
 
 * Unnecessary use of `from tkinter import *` (or any `*` at all)
 * Unnecessary use of `from turtle import *`
