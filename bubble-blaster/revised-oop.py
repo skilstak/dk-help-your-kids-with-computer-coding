@@ -1,8 +1,7 @@
 '''
 This object-oriented revision of the Bubble Blaster program tries to keep
-the general feel of the one in the book that uses global variables and
-such. For a version that takes a more direct tk approach see
-bubbles-revised-oop-tk.py
+the general feel of the one in the book but taking a traditional
+object-oriented approach.
 '''
 
 import tkinter
@@ -11,18 +10,28 @@ import time
 import random
 
 class CanvasObject():
+    '''
+    A generic parent class for all objects created for the tk canvas,
+    which often include several tk canvas shape, polygon, and text objects
+    combined into a single logic object for the canvas. This approach
+    allows complex collections of sprite images and more to be treated
+    as one object in terms of movement and collision detection.
+    '''
 
-    # mostly to document since always subclassed
     def __init__(self,canvas):
         self.canvas = canvas
         self.cid = None
         self.x = 0
         self.y = 0
 
-    def update_coords(self):
+    def _update_coords(self):
         pos = self.canvas.coords(self.cid)
         self.x = (pos[0] + pos[2]) / 2
         self.y = (pos[1] + pos[3]) / 2
+
+    def move(self,x,y):
+        self.canvas.move(self.cid,x,y)
+        self._update_coords()
 
 class Bubble(CanvasObject):
     min_radius = 10
@@ -38,9 +47,6 @@ class Bubble(CanvasObject):
         self.cid = canvas.create_oval(x-r, y-r, x+r, y+r, outline='white')
         self.speed = random.randint(1,self.max_speed)
 
-    def move(self,x,y):
-        self.canvas.move(self.cid,x,y)
-        self.update_coords()
 
     def remove(self):
         self.canvas.delete(self.cid)

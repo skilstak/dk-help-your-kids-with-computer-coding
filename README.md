@@ -27,8 +27,10 @@ To understand why these are bad practices we suggest the following official
 Python documentation: 
 
 * [PEP 8](http://legacy.python.org/dev/peps/pep-0008/)
-* [Idioms and Anti-Idioms in
-  Python](https://docs.python.org/3.4/howto/doanddont.html)
+* [Idioms and Anti-Idioms in Python](https://docs.python.org/3.4/howto/doanddont.html)
+* [Google Python Style Guide](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
+* [Yahoo Python Coding Standards](http://lists.osafoundation.org/pipermail/dev/2003-March/000479.html)
+* [CKAN Python Coding Standards](http://docs.ckan.org/en/latest/contributing/python.html)
 
 LICENSE
 =======
