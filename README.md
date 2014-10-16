@@ -19,6 +19,7 @@ practices and can be confusing to follow:
 * Poor use of structured data
 * Absence of any traditional Object-Oriented introduction
 * Unnecessary abbreviation and obfuscation of variable and function names
+* Use of `\` for line continuation
 * Failure to mention the [`ttk`](http://wiki.tcl.tk/14796) upgrades
 
 If unchecked these could instill bad habits into new programmers taking

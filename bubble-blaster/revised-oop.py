@@ -107,7 +107,7 @@ class Game():
         self.end = time.time() + self.time_limit
         self.window = tkinter.Tk()
         self.window.title('Bubble Blaster')
-        self.canvas = tkinter.Canvas(self.window, \
+        self.canvas = tkinter.Canvas(self.window, 
                 width=self.width, height=self.height, bg='darkblue')
         self.canvas.pack()
         self.ship = Ship(self.canvas)
