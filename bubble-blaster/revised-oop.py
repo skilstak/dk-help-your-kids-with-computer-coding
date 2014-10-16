@@ -12,26 +12,28 @@ import random
 class CanvasObject():
     '''
     A generic parent class for all objects created for the tk canvas,
-    which often include several tk canvas shape, polygon, and text objects
-    combined into a single logic object for the canvas. This approach
-    allows complex collections of sprite images and more to be treated
-    as one object in terms of movement and collision detection.
+    which often include several tk canvas shape, polygon, and text
+    objects combined into a single logic object with one root object. This
+    approach allows complex collections of sprite images and more to be
+    treated as one object in terms of movement and collision detection.
     '''
 
     def __init__(self,canvas):
         self.canvas = canvas
-        self.cid = None
+        self.root = None
         self.x = 0
         self.y = 0
 
-    def _update_coords(self):
-        pos = self.canvas.coords(self.cid)
+    def update_coords(self):
+        '''Usually just call this from move()'''
+        pos = self.canvas.coords(self.root)
         self.x = (pos[0] + pos[2]) / 2
         self.y = (pos[1] + pos[3]) / 2
 
     def move(self,x,y):
-        self.canvas.move(self.cid,x,y)
-        self._update_coords()
+        '''Override to move all the components of the CanvasObject'''
+        self.canvas.move(self.root,x,y)
+        self.update_coords()
 
 class Bubble(CanvasObject):
     min_radius = 10
@@ -44,12 +46,11 @@ class Bubble(CanvasObject):
         self.y = y
         self.radius = random.randint(self.min_radius, self.max_radius)
         r = self.radius
-        self.cid = canvas.create_oval(x-r, y-r, x+r, y+r, outline='white')
+        self.root = canvas.create_oval(x-r, y-r, x+r, y+r, outline='white')
         self.speed = random.randint(1,self.max_speed)
 
-
     def remove(self):
-        self.canvas.delete(self.cid)
+        self.canvas.delete(self.root)
 
 class Ship(CanvasObject):
     def __init__(self,canvas):
@@ -58,7 +59,7 @@ class Ship(CanvasObject):
         self.speed = 10
         self.poly = canvas.create_polygon(5,5,5,25,30,15,fill='red')
         self.oval = canvas.create_oval(0,0,30,30,outline='red')
-        self.cid = self.oval
+        self.root = self.oval
         canvas.bind_all('<Key>',self.handle_keyboard_move)
 
     def move(self,x,y):
@@ -85,11 +86,11 @@ class Text(CanvasObject):
         self.canvas = canvas
         self.text = text
         self.fill = fill
-        self.cid = canvas.create_text(x,y,text=text,fill=fill,font=font)
+        self.root = canvas.create_text(x,y,text=text,fill=fill,font=font)
 
     def update(self,text):
         self.text = text
-        self.canvas.itemconfig(self.cid,text=text)
+        self.canvas.itemconfig(self.root,text=text)
 
 class Game():
     def __init__(self):
