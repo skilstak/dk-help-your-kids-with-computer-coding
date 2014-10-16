@@ -47,6 +47,11 @@ the following inadequacies compared to Blockly as used by
 * Cannot be used to output other code (Blockly outputs JavaScript, Python
   and more).
 
+The book does provide some structure to the otherwise unstructured Scratch
+web site. By following along in the book this could be used to provide the
+same sort of progressive challenges that learn.code.org does but in an
+arguably less effective way.
+
 LICENSE
 =======
 
