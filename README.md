@@ -11,6 +11,7 @@ and [`tkinter`](https://docs.python.org/3.4/library/tkinter.html) modules.
 DK's book is one of the better ones but the Python examples use some bad
 practices and can be confusing to follow: 
 
+* No code documentation at all
 * Unnecessary use of `from tkinter import *` (or any `*` at all)
 * Unnecessary use of `from turtle import *`
 * Failing to consolidate `import` statements at top
@@ -18,6 +19,7 @@ practices and can be confusing to follow:
 * Poor use of structured data
 * Absence of any traditional Object-Oriented introduction
 * Unnecessary abbreviation and obfuscation of variable and function names
+* Failure to mention the [`ttk`](http://wiki.tcl.tk/14796) upgrades
 
 If unchecked these could instill bad habits into new programmers taking
 them at face value. This repo is to help parents and students make the
@@ -31,6 +33,19 @@ Python documentation:
 * [Google Python Style Guide](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html)
 * [Yahoo Python Coding Standards](http://lists.osafoundation.org/pipermail/dev/2003-March/000479.html)
 * [CKAN Python Coding Standards](http://docs.ckan.org/en/latest/contributing/python.html)
+
+Scratch v.s. Blockly
+====================
+
+It's worth noting as well that this book uses Scratch, which is suffers from
+the following inadequacies compared to Blockly as used by
+[learn.code.org](http://learn.code.org):
+
+* No functions at all, which are core to any computer programming
+* Not open source
+* Requires 'Flash' instead of just JavaScript
+* Cannot be used to output other code (Blockly outputs JavaScript, Python
+  and more).
 
 LICENSE
 =======
