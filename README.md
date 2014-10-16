@@ -37,11 +37,13 @@ Python documentation:
 Scratch v.s. Blockly
 ====================
 
-It's worth noting as well that this book uses Scratch, which is suffers from
-the following inadequacies compared to Blockly as used by
+It's worth noting as well that this book uses
+[Scratch](http://scratch.mit.edu/), which is suffers from
+the following inadequacies compared to
+[Blockly](https://code.google.com/p/blockly/) as used by
 [learn.code.org](http://learn.code.org):
 
-* No functions at all, which are core to any computer programming
+* No functions at all ([Snap!](http://snap.berkeley.edu/) created to address)
 * Not open source
 * Requires 'Flash' instead of just JavaScript
 * Cannot be used to output other code (Blockly outputs JavaScript, Python
