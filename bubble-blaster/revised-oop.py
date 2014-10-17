@@ -35,6 +35,10 @@ class CanvasObject():
         self.canvas.move(self.root,x,y)
         self.update_coords()
 
+    def step(self):
+        '''Override to give CanvasObject behavior for each step'''
+        pass
+
 class Bubble(CanvasObject):
     min_radius = 10
     max_radius = 30
@@ -57,25 +61,46 @@ class Ship(CanvasObject):
         self.canvas = canvas
         self.radius = 15
         self.speed = 10
+        self.moving_up = False
+        self.moving_down = False
+        self.moving_left = False
+        self.moving_right = False
         self.poly = canvas.create_polygon(5,5,5,25,30,15,fill='red')
         self.oval = canvas.create_oval(0,0,30,30,outline='red')
         self.root = self.oval
-        canvas.bind_all('<Key>',self.handle_keyboard_move)
+        canvas.bind_all('<KeyPress>',self._handle_keypress)
+        canvas.bind_all('<KeyRelease>',self._handle_keyrelease)
 
     def move(self,x,y):
         self.canvas.move(self.poly,x,y)
         self.canvas.move(self.oval,x,y)
         self.update_coords()
 
-    def handle_keyboard_move(self,event):
-        if event.keysym == 'Up':
+    def step(self):
+        if self.moving_up:
             self.move(0,-self.speed)
-        elif event.keysym == 'Down':
+        if self.moving_down:
             self.move(0,self.speed)
-        elif event.keysym == 'Left':
+        if self.moving_left:
             self.move(-self.speed,0)
-        elif event.keysym == 'Right':
+        if self.moving_right:
             self.move(self.speed,0)
+
+    def _update_moving(self,event,state):
+        if event.keysym == 'Up':
+            self.moving_up = state
+        elif event.keysym == 'Down':
+            self.moving_down = state
+        elif event.keysym == 'Left':
+            self.moving_left = state
+        elif event.keysym == 'Right':
+            self.moving_right = state
+
+    def _handle_keypress(self,event):
+        self._update_moving(event,True)
+
+    def _handle_keyrelease(self,event):
+        self._update_moving(event,False)
 
 class Text(CanvasObject):
     def_color = 'white'
@@ -155,6 +180,7 @@ class Game():
             self.time_left = int(self.end - time.time())
             self.update_gui()
             self.window.update()
+            self.ship.step()
             time.sleep(0.01)
         Text(self.canvas,self.mid_x, self.mid_y,'GAME OVER',
                 font=('Helvetica',30))

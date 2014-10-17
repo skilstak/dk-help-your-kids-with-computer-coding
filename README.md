@@ -21,6 +21,7 @@ practices and can be confusing to follow:
 * Unnecessary abbreviation and obfuscation of variable and function names
 * Use of `\` for line continuation
 * Failure to mention the [`ttk`](http://wiki.tcl.tk/14796) upgrades
+* Use of `<Key>` events instead of `<KeyPress>` and `<KeyRelease>`
 
 If unchecked these could instill bad habits into new programmers taking
 them at face value. This repo is to help parents and students make the
