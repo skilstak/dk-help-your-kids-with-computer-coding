@@ -9,7 +9,7 @@ import math
 import time
 import random
 
-class CanvasObject():
+class CanvasObject(object):
     '''
     A generic parent class for all objects created for the tk canvas,
     which often include several tk canvas shape, polygon, and text
