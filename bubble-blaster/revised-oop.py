@@ -39,6 +39,10 @@ class CanvasObject():
         '''Override to give CanvasObject behavior for each step'''
         pass
 
+    def destroy(self):
+        '''Override to remove and cleanup all the canvas items for self'''
+        pass
+
 class Bubble(CanvasObject):
     min_radius = 10
     max_radius = 30
@@ -53,7 +57,7 @@ class Bubble(CanvasObject):
         self.root = canvas.create_oval(x-r, y-r, x+r, y+r, outline='white')
         self.speed = random.randint(1,self.max_speed)
 
-    def remove(self):
+    def destroy(self):
         self.canvas.delete(self.root)
 
 class Ship(CanvasObject):
@@ -118,30 +122,32 @@ class Text(CanvasObject):
         self.canvas.itemconfig(self.root,text=text)
 
 class Game():
+    height = 500
+    width = 800
+    mid_x = width / 2
+    mid_y = height / 2
+    bonus_score = 1000
+    bubble_chance = 10
+    gap = 100
+    time_limit = 30
+    speed = 0.01
+
     def __init__(self):
-        self.height = 500
-        self.width = 800
-        self.mid_x = self.width / 2
-        self.mid_y = self.height / 2
-        self.bonus_score = 1000
-        self.bubble_chance = 10
-        self.gap = 100
-        self.time_limit = 30
         self.score = 0
         self.bonus = 0
-        self.end = time.time() + self.time_limit
         self.window = tkinter.Tk()
         self.window.title('Bubble Blaster')
-        self.canvas = tkinter.Canvas(self.window, 
-                width=self.width, height=self.height, bg='darkblue')
-        self.canvas.pack()
-        self.ship = Ship(self.canvas)
-        self.bubbles = list()
-        self.ship.move(self.mid_x, self.mid_y)
-        self.gui_time_title = Text(self.canvas,50,30,'TIME')
-        self.gui_score_title = Text(self.canvas,150,30,'SCORE')
+        self.canvas = tkinter.Canvas(self.window, width=self.width,
+                height=self.height, bg='darkblue')
+        self.end = time.time() + self.time_limit
+        Text(self.canvas,50,30,'TIME')
+        Text(self.canvas,150,30,'SCORE')
         self.gui_score = Text(self.canvas,150,50)
         self.gui_time = Text(self.canvas,50,50)
+        self.canvas.pack()
+        self.bubbles = list()
+        self.ship = Ship(self.canvas)
+        self.ship.move(self.mid_x, self.mid_y)
 
     def coords_of(cid):
         pos = c.coords(cid)
@@ -158,14 +164,14 @@ class Game():
         for bubble in self.bubbles:
             bubble.move(-bubble.speed,0)
 
-    def remove_bubble(self,bubble):
+    def destroy_bubble(self,bubble):
         self.bubbles.remove(bubble)
-        bubble.remove()
+        bubble.destroy()
 
     def clean_up_bubbles(self):
         for bubble in self.bubbles:
             if bubble.x < -self.gap:
-                self.remove_bubble(bubble)
+                self.destroy_bubble(bubble)
 
     def run(self):
         while time.time() < self.end:
@@ -181,7 +187,7 @@ class Game():
             self.update_gui()
             self.window.update()
             self.ship.step()
-            time.sleep(0.01)
+            time.sleep(self.speed)
         Text(self.canvas,self.mid_x, self.mid_y,'GAME OVER',
                 font=('Helvetica',30))
         Text(self.canvas,self.mid_x, self.mid_y + 30,
@@ -201,7 +207,7 @@ class Game():
             boundary = self.ship.radius + bubble.radius
             if distance < boundary:
                 points += bubble.radius + bubble.speed
-                self.remove_bubble(bubble)
+                self.destroy_bubble(bubble)
         return points
 
     def update_gui(self):
