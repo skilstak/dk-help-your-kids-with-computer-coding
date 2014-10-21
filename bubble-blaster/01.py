@@ -12,4 +12,4 @@ c = tkinter.Canvas(window, width=WIDTH, height=HEIGHT, bg='darkblue')
 c.pack()
 
 # easy way to keep the window open
-input()
+window.mainloop()

@@ -36,4 +36,4 @@ def move_ship(event):
 c.bind_all('<Key>',move_ship)
 
 # easy way to keep the window open
-input()
+window.mainloop()

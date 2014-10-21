@@ -156,4 +156,4 @@ c.create_text(MID_X, MID_Y + 45, text='Bonus Time: ' +
         str(bonus*TIME_LIMIT), fill='white')
 
 # added to keep the final screen up (when not using IDLE)
-input()
+window.mainloop()

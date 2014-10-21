@@ -56,4 +56,4 @@ def create_bubble():
     bubble_speed.append(random.randint(1,MAX_BUBBLE_SPEED))
 
 # easy way to keep the window open
-input()
+window.mainloop()

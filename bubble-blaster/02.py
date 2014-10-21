@@ -19,4 +19,4 @@ c.move(ship_id,MID_X,MID_Y)
 c.move(ship_id2,MID_X,MID_Y)
 
 # easy way to keep the window open
-input()
+window.mainloop()

@@ -138,4 +138,4 @@ while True:
     time.sleep(0.01)
 
 # have to add this back to keep it on the screen
-input()
+window.mainloop()
